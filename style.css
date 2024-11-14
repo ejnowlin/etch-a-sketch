@@ -2,3 +2,24 @@
   margin: 0;
   padding: 0;
 }
+
+#grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px auto;
+    padding: 10px;
+    width: 1000px;
+    height: auto;
+    border-style: inset;
+    border-color: rgb(169, 19, 49);
+    border-width: 5px;
+}
+
+#grid-container div {
+    width: 60px;
+    height: 60px;
+    border-style: solid;
+    border-width: 1px;
+}
