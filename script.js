@@ -5,3 +5,8 @@ for (let i = 0; i < 256; i++) {
     gridContainer.appendChild(div);
     div.classList.toggle("square");
 }
+
+gridContainer.addEventListener("mouseover", (event) => {
+    if (event.target.className === "square")
+        event.target.style.cssText = "background-color: grey;";
+});
