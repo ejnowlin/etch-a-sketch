@@ -2,6 +2,13 @@ const gridContainer = document.querySelector("#grid-container");
 const gridSizeBtn = document.querySelector("#grid-size-btn");
 var gridSquareSize = document.createElement("style");
 
+function getRandomIntInclusive(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+}
+
 function addNewGrid(input) {
     let newGridSize = 1;
 
@@ -17,6 +24,7 @@ function addNewGrid(input) {
 
     for (let i = 0; i < (newGridSize * newGridSize); i++) {
         const div = document.createElement("div");
+        
         gridContainer.appendChild(div);
         div.classList.toggle("square");
     }
@@ -31,11 +39,19 @@ function addNewGrid(input) {
 }
 
 gridContainer.addEventListener("mouseover", (event) => {
-    if (event.target.className === "square")
-        event.target.style.cssText = "background-color: grey;";
+    let red, green, blue;
+    red = getRandomIntInclusive(0, 255);
+    green = getRandomIntInclusive(0, 255);
+    blue = getRandomIntInclusive(0, 255);
+
+    if (event.target.className === "square") {
+        event.target.style.cssText = `
+            background-color: rgb(${red}, ${green}, ${blue});`;
+    }
 });
 
 gridSizeBtn.addEventListener("click", () => {
     let userInput = prompt("How many squares per side of the new grid?", "100 max");
+    
     addNewGrid(userInput);
 });
