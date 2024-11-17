@@ -53,9 +53,13 @@ gridContainer.addEventListener("mouseover", (event) => {
             opacity = parseFloat(opacity);
         }
 
-        event.target.style.cssText = `
+        if (event.target.style.backgroundColor === "") {
+            event.target.style.cssText = `
             background-color: rgb(${red}, ${green}, ${blue});
             opacity: ${opacity += 0.1};`;
+        } else {
+            event.target.style.opacity = (opacity += 0.1);
+        }
     }
 });
 
