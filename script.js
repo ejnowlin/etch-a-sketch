@@ -39,19 +39,27 @@ function addNewGrid(input) {
 }
 
 gridContainer.addEventListener("mouseover", (event) => {
-    let red, green, blue;
-    red = getRandomIntInclusive(0, 255);
-    green = getRandomIntInclusive(0, 255);
-    blue = getRandomIntInclusive(0, 255);
-
     if (event.target.className === "square") {
+        let red, green, blue;
+        red = getRandomIntInclusive(0, 255);
+        green = getRandomIntInclusive(0, 255);
+        blue = getRandomIntInclusive(0, 255);
+
+        let opacity = event.target.style.opacity;
+        if (opacity === "") {
+            opacity = "0";
+            opacity = parseInt(opacity);
+        } else {
+            opacity = parseFloat(opacity);
+        }
+
         event.target.style.cssText = `
-            background-color: rgb(${red}, ${green}, ${blue});`;
+            background-color: rgb(${red}, ${green}, ${blue});
+            opacity: ${opacity += 0.1};`;
     }
 });
 
 gridSizeBtn.addEventListener("click", () => {
     let userInput = prompt("How many squares per side of the new grid?", "100 max");
-    
     addNewGrid(userInput);
 });
